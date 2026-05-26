@@ -3,6 +3,32 @@ function calculate() {
     let tip = document.getElementById("tip").value
     let people = document.getElementById("people").value
 
+    document.getElementById("bill-error").innerText = ""
+    document.getElementById("tip-error").innerText = ""
+    document.getElementById("people-error").innerText = ""
+
+    let isValid = true
+
+    if ( bill <= 0 || bill === ""){
+        document.getElementById("bill-error").innerText = "Bill must be a positive number"
+        isValid = false
+
+    }
+
+    if ( tip < 0 || tip > 100 ){
+        document.getElementById("tip-error").innerText = "Tip must be between 0 and 100"
+        isValid = false
+
+    }
+
+    if ( people < 1 || people === "" || !Number.isInteger(Number(people))) {
+        document.getElementById("people-error").innerText = "Must be at least 1 person"
+        isValid = false
+
+    }
+
+
+   if (isValid) {
     let tipAmount = bill * (tip / 100)
     let grandTotal = Number(bill) + Number(tipAmount)
     let perPerson = grandTotal / people
@@ -10,6 +36,8 @@ function calculate() {
     document.getElementById("total-tip").innerText = tipAmount.toFixed(2)
     document.getElementById("grand-total").innerText = grandTotal.toFixed(2)
     document.getElementById("per-person").innerText = perPerson.toFixed(2)
+    }
+
 }
 
 
