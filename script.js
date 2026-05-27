@@ -59,5 +59,20 @@ document.getElementById("reset").onclick = function(){
     document.getElementById("per-person").innerText = "0"
 }
 
+function setTip(value){
+    if (value !== "custom"){
+        document.getElementById("tip").value = value
+        calculate()
+    } else{
+        document.getElementById("tip").value = ""
+    }
+}
+
+document.getElementById("btn10").onclick = function(){ setTip("10")}
+document.getElementById("btn15").onclick = function(){ setTip("15")}
+document.getElementById("btn20").onclick = function(){ setTip("20")}
+document.getElementById("btnCustom").onclick = function(){ setTip("custom")}
+
+
 
 
