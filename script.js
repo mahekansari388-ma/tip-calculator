@@ -71,6 +71,7 @@ function setTip(value){
         calculate()
     } else{
         document.getElementById("tip").value = ""
+        document.getElementById("tip").focus() // Directly takes you to the input
     }
 }
 

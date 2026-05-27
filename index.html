@@ -4,41 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tip Calculator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-    <body>
-    <h1>Tip Calculator</h1>
-    <div id="inputs">
+<body>
+    <!-- Webpage Title (Left side upper) -->
+    <h1 id="web-title">Tip Calculator</h1>
 
-        <label>Bill Amount (₹)</label>
-        <input type="number" id="bill" placeholder="Enter bill amount">
-        <p id="bill-error"></p>
+    <div id="main-container">
+        <!-- First Mobile (Inputs) -->
+        <div class="mobile-box light">
+            <div class="heading">
+                <h1>Calculate</h1>
+            </div>
+            <div id="inputs">
+                <label>Bill Amount (₹)</label>
+                <input type="number" id="bill" placeholder="0.00">
+                <p id="bill-error"></p>
 
-        <label>Tip Percentage</label>
-        <button id ="btn10">10%</button>
-        <button id ="btn15">15%</button>
-        <button id="btn20">20%</button>
-        <button id="btnCustom">Custom</button>
+                <label>Tip Percentage</label>
+                <div class="tip-btns">
+                    <button id="btn10">10%</button>
+                    <button id="btn15">15%</button>
+                    <button id="btn20">20%</button>
+                    <button id="btnCustom">Custom</button>
+                </div>
 
+                <input type="number" id="tip" placeholder="Tip %">
+                <p id="tip-error"></p>
 
-        <input type="number" id="tip" placeholder="Enter tip %">
-        <p id="tip-error"></p>
+                <label>Number of People</label>
+                <input type="number" id="people" placeholder="0">
+                <p id="people-error"></p>
 
-        <label>Number of People</label>
-        <input type="number" id="people" placeholder="Enter number of people">
-        <p id="people-error"></p>
+                <button id="reset">Reset All</button>
+            </div>
+        </div>
 
-        <button id="reset">Reset</button>
-
+        <!-- Second Mobile (Outputs) -->
+        <div class="mobile-box light">
+            <div class="heading">
+                <h1>Summary</h1>
+            </div>
+            <div id="outputs">
+                <div class="result-group">
+                    <p>Bill Amount</p>
+                    <p>₹<span id="bill-amount">0.00</span></p>
+                </div>
+                <div class="result-group">
+                    <p>Total Tip</p>
+                    <p>₹<span id="total-tip">0.00</span></p>
+                </div>
+                <div class="result-group highlight">
+                    <p>Grand Total</p>
+                    <p>₹<span id="grand-total">0.00</span></p>
+                </div>
+                <div class="result-group main-result">
+                    <p>Per Person</p>
+                    <p>₹<span id="per-person">0.00</span></p>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div id="outputs">
-        <p>Bill Amount: ₹<span id="bill-amount">0</span></p>
-        <p>Total Tip: ₹<span id="total-tip">0</span></p>
-        <p>Grand Total: ₹<span id="grand-total">0</span></p>
-        <p>Per Person: ₹<span id="per-person">0</span></p>
-    </div>
-
-<script src="script.js"></script>
-    </body>
+    <script src="script.js"></script>
+</body>
 </html>
-    
