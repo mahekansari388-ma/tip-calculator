@@ -45,5 +45,19 @@ document.getElementById("bill").oninput = calculate
 document.getElementById("tip").oninput = calculate
 document.getElementById("people").oninput = calculate
 
+document.getElementById("reset").onclick = function(){
+    document.getElementById("bill").value = ""
+    document.getElementById("tip").value = ""
+    document.getElementById("people").value = ""
+
+    document.getElementById("bill-error").innerText = ""
+    document.getElementById("tip-error").innerText = ""
+    document.getElementById("people-error").innerText = ""
+
+    document.getElementById("total-tip").innerText = "0"
+    document.getElementById("grand-total").innerText = "0"
+    document.getElementById("per-person").innerText = "0"
+}
+
 
 
