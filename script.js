@@ -29,10 +29,15 @@ function calculate() {
 
 
    if (isValid) {
-    let tipAmount = bill * (tip / 100)
-    let grandTotal = Number(bill) + Number(tipAmount)
-    let perPerson = grandTotal / people
+    let billNum = Number(bill)
+    let tipNum = Number(tip)
+    let peopleNum = Number(people)
+
+    let tipAmount = billNum * (tipNum / 100)
+    let grandTotal = billNum + tipAmount
+    let perPerson = grandTotal / peopleNum
     
+    document.getElementById("bill-amount").innerText = billNum.toFixed(2)
     document.getElementById("total-tip").innerText = tipAmount.toFixed(2)
     document.getElementById("grand-total").innerText = grandTotal.toFixed(2)
     document.getElementById("per-person").innerText = perPerson.toFixed(2)
@@ -54,6 +59,7 @@ document.getElementById("reset").onclick = function(){
     document.getElementById("tip-error").innerText = ""
     document.getElementById("people-error").innerText = ""
 
+    document.getElementById("bill-amount").innerText = "0"
     document.getElementById("total-tip").innerText = "0"
     document.getElementById("grand-total").innerText = "0"
     document.getElementById("per-person").innerText = "0"
