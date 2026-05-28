@@ -7,74 +7,97 @@
 
 body {
     background: hsla(196, 100%, 33%, 1);
-
-background: linear-gradient(90deg, hsla(196, 100%, 33%, 1) 0%, hsla(201, 89%, 93%, 1) 100%);
-
-background: -moz-linear-gradient(90deg, hsla(196, 100%, 33%, 1) 0%, hsla(201, 89%, 93%, 1) 100%);
-
-background: -webkit-linear-gradient(90deg, hsla(196, 100%, 33%, 1) 0%, hsla(201, 89%, 93%, 1) 100%);
-
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#007BA7", endColorstr="#DBF1FD", GradientType=1 );
+    background: linear-gradient(90deg, hsla(196, 100%, 33%, 1) 0%, hsla(201, 89%, 93%, 1) 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    transition: background 0.3s ease;
 }
 
 #web-title {
     position: absolute;
     top: 40px;
     left: 40px;
-    color:#4A5A6A;
+    color: #4A5A6A;
     font-size: 2.5rem;
     font-weight: 800;
     letter-spacing: -1px;
+    margin: 0;
 }
 
 #main-container {
     display: flex;
-    gap: 15px; /* Very little gap as requested */
-    align-items: center;
+    gap: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1440px;
+    width: 100%;
+    padding-top: 80px;
 }
 
 .mobile-box {
-    width: 300px;
-    height: 600px; /* Restored to original height */
+    width: 92%;
+    max-width: 330px; /* Reduced width */
+    min-height: 540px; /* Even less long */
+    background: linear-gradient(135deg, #f0f7ff 0%, #d6e4f0 100%);
     border-radius: 40px;
-    padding: 30px 20px;
+    padding: 40px 25px;
     display: flex;
     flex-direction: column;
-    position: relative;
-}
-
-#main-container .mobile-box:first-child {
-    box-shadow: 15px 20px 50px rgba(0, 0, 0, 0.2); /* Shadow on the right */
-}
-
-#main-container .mobile-box:last-child {
-    box-shadow: -15px 20px 50px rgba(0, 0, 0, 0.2); /* Shadow on the left */
-}
-
-/* Light Theme (Applied to both boxes) */
-.light {
-    background: linear-gradient(135deg, #f0f7ff 0%, #d6e4f0 100%);
-    border: none; /* Borders removed */
     color: #4A5A6A;
+    transition: box-shadow 0.3s ease;
 }
 
-.light .heading h1 { font-weight: 700; }
-.light label { color: #7A8A9A; margin-bottom: 5px; font-size: 0.8rem; }
-.light input { 
+/* Shadows specifically for side-by-side desktop view */
+@media (min-width: 769px) {
+    #main-container .mobile-box:first-child {
+        box-shadow: 15px 20px 50px rgba(0, 0, 0, 0.15); /* Shadow on the right side */
+    }
+    #main-container .mobile-box:last-child {
+        box-shadow: -15px 20px 50px rgba(0, 0, 0, 0.15); /* Shadow on the left side */
+    }
+}
+
+/* Selected Tip Button Style */
+.tip-btns button.selected-tip {
+    background: #007BA7 !important;
+    color: white !important;
+    border-color: #007BA7 !important;
+    box-shadow: 0 4px 12px rgba(0, 123, 167, 0.3);
+}
+
+#reset:active {
+    background: #ff4d4d !important; /* Vivid color appears when clicked */
+    transform: scale(0.98);
+}
+
+/* Light Theme / Reusable Styles */
+.heading h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: left; 
+    margin-bottom: 30px;
+    padding-left: 5px;
+}
+
+label { color: #7A8A9A; margin-bottom: 5px; font-size: 0.8rem; display: block; }
+
+input { 
+    width: 100%;
     background: rgba(255, 255, 255, 0.6); 
     border: none; 
     border-radius: 12px; 
     padding: 12px; 
     margin-bottom: 10px;
     color: #333;
+    outline: none;
 }
 
 .tip-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+
 .tip-btns button {
     background: rgba(255, 255, 255, 0.8);
     border: 1px solid rgba(0,0,0,0.05);
@@ -83,7 +106,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#007BA7", en
     cursor: pointer;
     font-weight: 500;
     color: #4A5A6A;
-    transition: all 0.2s ease;
+    transition: all 0.1s ease; /* Faster transition for click feel */
 }
 
 .tip-btns button:hover {
@@ -92,10 +115,10 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#007BA7", en
     color: #007BA7;
 }
 
-.tip-btns button:active {
-    background: #007BA7;
-    color: white;
-    border-color: #007BA7;
+/* Clicking feel for all buttons */
+button:active {
+    transform: scale(0.92) !important; /* Noticeable push-in effect */
+    filter: brightness(0.9); /* Slight darkening to look pressed */
 }
 
 #reset {
@@ -104,7 +127,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#007BA7", en
     color: white;
     border: none;
     border-radius: 15px;
-    padding: 10px; /* Shorter padding */
+    padding: 10px;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -113,11 +136,6 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#007BA7", en
 #reset:hover {
     background: #005f82;
     transform: translateY(-1px);
-}
-
-#reset:active {
-    background: #004a66;
-    transform: translateY(0);
 }
 
 #outputs {
@@ -143,19 +161,12 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#007BA7", en
     background: rgba(58, 134, 255, 0.1);
     padding: 20px;
     border-radius: 20px;
-    border: none;
 }
 
 .main-result p:last-child {
     color: #007BA7;
     font-size: 1.8rem;
-}
-
-.heading h1 {
-    font-size: 1.4rem;
-    text-align: left; 
-    margin-bottom: 30px;
-    padding-left: 5px;
+    font-weight: 700;
 }
 
 p[id$="-error"] {
@@ -163,4 +174,66 @@ p[id$="-error"] {
     font-size: 0.7rem;
     margin-top: -8px;
     margin-bottom: 5px;
+}
+
+/* --- THE RESPONSIVE MAGIC --- */
+
+@media (max-width: 768px) {
+    body {
+        background: #fff; /* Background disappears on mobile */
+        padding: 10px;
+        align-items: flex-start;
+        display: block;
+    }
+
+    #web-title {
+        position: relative;
+        top: 0;
+        left: 0;
+        font-size: 1.8rem;
+        margin: 20px 0 20px 10px;
+        width: auto;
+    }
+
+    #main-container {
+        padding-top: 0;
+        flex-direction: column-reverse; /* Summary on top, Inputs below to avoid keyboard hiding output */
+        gap: 0;
+        background: linear-gradient(135deg, #f0f7ff 0%, #d6e4f0 100%);
+        border-radius: 30px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        overflow: hidden;
+        max-width: 100%;
+    }
+
+    .mobile-box, .light {
+        max-width: 100%;
+        min-height: auto;
+        box-shadow: none !important;
+        background: transparent !important;
+        padding: 25px 20px;
+        border-radius: 0;
+    }
+
+    /* Visual separator between the two sections on mobile */
+    #main-container .mobile-box:last-child {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+}
+
+/* Specific adjustments for 360px and smaller */
+@media (max-width: 360px) {
+    #web-title {
+        font-size: 1.5rem;
+        margin-left: 5px;
+    }
+    .mobile-box {
+        padding: 20px 15px;
+    }
+    .main-result {
+        padding: 15px;
+    }
+    .main-result p:last-child {
+        font-size: 1.5rem;
+    }
 }
