@@ -6,8 +6,11 @@
 }
 
 body {
-    background: hsla(196, 100%, 33%, 1);
-    background: linear-gradient(90deg, hsla(196, 100%, 33%, 1) 0%, hsla(201, 89%, 93%, 1) 100%);
+
+background: linear-gradient(90pdeg, #007BA7 0%, #DBF1FD 100%);
+background: -moz-linear-gradient(90deg, #007BA7 0%, #DBF1FD 100%);
+background: -webkit-linear-gradient(90deg, #007BA7 0%, #DBF1FD 100%);
+
     min-height: 100vh;
     display: flex;
     justify-content: center;
